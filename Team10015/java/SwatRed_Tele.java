@@ -115,6 +115,12 @@ public class SwatRed_Tele extends LinearOpMode {
             else if (gamepad1.a){
                 robot.strafe(1,"right");
             }
+            else if (gamepad1.y){
+                robot.strafe(1,"sideleft");
+            }
+            else if (gamepad1.b){
+                robot.strafe(1,"sideright");
+            }
 
             // Gripper operations
             if (gamepad1.left_bumper){
