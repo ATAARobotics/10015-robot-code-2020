@@ -158,7 +158,7 @@ public class SwatRedBot_no_vf
         // color sensors
         colorSensor = hwMap.get(NormalizedColorSensor .class, "sensor_color");
         //Limit Switch
-        limit_1 = hwMap.get(DigitalChannel.class,"limit_1");
+        limit_1 = hwMap.get(DigitalChannel.class,"left_limit");
         limit_1.setMode(DigitalChannel.Mode.INPUT);
 
         init_Gyro();   // initial gyro sensor
@@ -214,13 +214,13 @@ public class SwatRedBot_no_vf
      */
     public void grip(String motion){
         if (motion == "open"){
-            left_gripper.setPosition(MIN_POSITION);
-            right_gripper.setPosition(MIN_POSITION);
+            left_gripper.setPosition(1);
+            right_gripper.setPosition(1);
 
 
         } else if (motion == "close"){
-            left_gripper.setPosition(MAX_POSITION);
-            right_gripper.setPosition(MAX_POSITION);
+            left_gripper.setPosition(0.75);
+            right_gripper.setPosition(0.6);
         }
     }
 
@@ -241,6 +241,18 @@ public class SwatRedBot_no_vf
             fr_Drive.setPower(-power);
             bl_Drive.setPower(-power);
             br_Drive.setPower(power);
+        }
+        if(direction =="left"){
+            fl_Drive.setPower(0);
+            fr_Drive.setPower(-power);
+            bl_Drive.setPower(-power);
+            br_Drive.setPower(0);
+        }
+        if(direction == "right"){
+            fl_Drive.setPower(-power);
+            fr_Drive.setPower(0);
+            bl_Drive.setPower(0);
+            br_Drive.setPower(-power);
         }
     }
 
